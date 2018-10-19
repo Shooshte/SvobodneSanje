@@ -1,40 +1,46 @@
-import React from 'react'
-import { Link } from 'gatsby'
-import github from '../img/github-icon.svg'
-import logo from '../img/logo.svg'
+import React from "react";
+import { Link } from "gatsby";
+import styled from "react-emotion";
+
+import { COLORS, SIZES } from "../styles/constants";
+
+const Container = styled("nav")`
+  position: fixed;
+  padding: 1rem;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  background-color: ${COLORS.main};
+  .links-container {
+    max-width: ${SIZES.screenSize};
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .nav-link {
+    color: ${COLORS.light};
+    padding: 0 1rem;
+    text-decoration: none;
+  }
+  @media only screen and (min-width: 60ch) {
+    .links-container {
+      margin-left: calc((100% - ${SIZES.screenSize}) * 0.6);
+    }
+  }
+`;
 
 const Navbar = () => (
-  <nav className="navbar is-transparent">
-    <div className="container">
-      <div className="navbar-brand">
-        <Link to="/" className="navbar-item">
-          <figure className="image">
-            <img src={logo} alt="Kaldi" style={{ width: '88px' }} />
-          </figure>
-        </Link>
-      </div>
-      <div className="navbar-start">
-        <Link className="navbar-item" to="/about">
-          About
-        </Link>
-        <Link className="navbar-item" to="/products">
-          Products
-        </Link>
-      </div>
-      <div className="navbar-end">
-        <a
-          className="navbar-item"
-          href="https://github.com/AustinGreen/gatsby-netlify-cms-boilerplate"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span className="icon">
-            <img src={github} alt="Github" />
-          </span>
-        </a>
-      </div>
+  <Container>
+    <div className="links-container">
+      <Link to="/" className="nav-link">
+        Blog
+      </Link>
+      <Link to="/about" className="nav-link">
+        About
+      </Link>
     </div>
-  </nav>
-)
+  </Container>
+);
 
-export default Navbar
+export default Navbar;
