@@ -7,7 +7,7 @@ import "../styles/layout.sass";
 
 const TemplateWrapper = ({ children }) => (
   <div className="layout-container">
-    <Helmet title="topdeckAndWreck" />
+    <Helmet title="Miha Sustersic | svobodneSanje" />
     <Navbar />
     <div>{children}</div>
   </div>
