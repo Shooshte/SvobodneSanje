@@ -1,14 +1,10 @@
 ---
 templateKey: cv-page
-title: What even is this...
+name: Miha Šušteršič
+portrait: /img/headshot.png
 ---
-
-# topdeckAndWreck
-
-> This is a silly paragraph to test that content publishing is working.
-
-Because you know, it has to be tested, seriously.
-
-```
-// this is a code snippet
-```
+- Personal information
+- Work experience
+- Education and Training
+- Personal Skills
+- Additional information
