@@ -35,8 +35,8 @@ collections:
               label: "Template Key",
               name: "templateKey",
               widget: "hidden",
-              default: "about-page",
+              default: "cv-page",
             }
-          - { label: Headshot, name: "headshot", widget: "image" }
+          - { label: "Portrait", name: "portrait", widget: "image" }
           - { label: "Name", name: "name", widget: "string" }
           - { label: "Body", name: "body", widget: "markdown" }

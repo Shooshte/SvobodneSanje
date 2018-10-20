@@ -1,7 +1,8 @@
 ---
-templateKey: about-page
+templateKey: cv-page
 title: What even is this...
 ---
+
 # topdeckAndWreck
 
 > This is a silly paragraph to test that content publishing is working.
