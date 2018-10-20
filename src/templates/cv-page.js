@@ -4,7 +4,7 @@ import { graphql } from "gatsby";
 import Layout from "../components/Layout";
 import Content, { HTMLContent } from "../components/Content";
 
-export const CVPageTemplate = ({ title, content, contentComponent }) => {
+export const CVPageTemplate = ({ name, content, contentComponent }) => {
   const PageContent = contentComponent || Content;
 
   return (
@@ -14,7 +14,7 @@ export const CVPageTemplate = ({ title, content, contentComponent }) => {
           <div className="column is-10 is-offset-1">
             <div className="section">
               <h2 className="title is-size-3 has-text-weight-bold is-bold-light">
-                {title}
+                {name}
               </h2>
               <PageContent className="content" content={content} />
             </div>
@@ -26,7 +26,8 @@ export const CVPageTemplate = ({ title, content, contentComponent }) => {
 };
 
 CVPageTemplate.propTypes = {
-  title: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  portrait: PropTypes.any.isRequired,
   content: PropTypes.string,
   contentComponent: PropTypes.func
 };
@@ -51,12 +52,13 @@ CVPage.propTypes = {
 
 export default CVPage;
 
-export const aboutPageQuery = graphql`
-  query AboutPage($id: String!) {
+export const cvPageQuery = graphql`
+  query CVPage($id: String!) {
     markdownRemark(id: { eq: $id }) {
       html
       frontmatter {
-        title
+        name
+        portrait
       }
     }
   }

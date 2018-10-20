@@ -28,14 +28,14 @@ collections:
     label: "Pages"
     files:
       - file: "src/pages/CV/index.md"
-        label: "About"
-        name: "about"
+        label: "CV"
+        name: "CV"
         fields:
           - {
               label: "Template Key",
               name: "templateKey",
               widget: "hidden",
-              default: "about-page",
+              default: "cv-page",
             }
           - { label: "Name", name: "name", widget: "string" }
           - { label: "Portrait", name: "portrait", widget: "image" }
