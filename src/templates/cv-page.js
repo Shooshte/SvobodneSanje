@@ -4,6 +4,8 @@ import { graphql } from "gatsby";
 import Layout from "../components/Layout";
 import Content, { HTMLContent } from "../components/Content";
 
+import "../styles/cv.sass";
+
 export const CVPageTemplate = ({
   name,
   portrait,
@@ -16,10 +18,18 @@ export const CVPageTemplate = ({
   console.log(categories);
 
   return (
-    <div>
-      <img src={portrait} alt="portrait" />
-      <h3>{name}</h3>
+    <div className="cv-container">
+      <img className="portrait" src={portrait} alt="portrait" />
+      <h1>{name}</h1>
       <PageContent content={content} />
+      {categories.map(category => {
+        return (
+          <div className="category-container">
+            <h3 className="category-title">{category.title}</h3>
+            <PageContent className="category-content" content={category.body} />
+          </div>
+        );
+      })}
     </div>
   );
 };
@@ -27,12 +37,14 @@ export const CVPageTemplate = ({
 CVPageTemplate.propTypes = {
   name: PropTypes.string.isRequired,
   portrait: PropTypes.any.isRequired,
-  content: PropTypes.string,
+  categories: PropTypes.array,
   contentComponent: PropTypes.func
 };
 
 const CVPage = ({ data }) => {
   const { markdownRemark: post } = data;
+
+  console.log(data);
 
   return (
     <Layout>
@@ -41,7 +53,6 @@ const CVPage = ({ data }) => {
         name={post.frontmatter.name}
         portrait={post.frontmatter.portrait}
         categories={post.frontmatter.categories}
-        content={post.html}
       />
     </Layout>
   );
@@ -56,11 +67,13 @@ export default CVPage;
 export const cvPageQuery = graphql`
   query CVPage($id: String!) {
     markdownRemark(id: { eq: $id }) {
-      html
       frontmatter {
         name
         portrait
-        categories
+        categories {
+          title
+          body
+        }
       }
     }
   }
