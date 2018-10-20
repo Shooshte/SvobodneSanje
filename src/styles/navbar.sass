@@ -1,0 +1,22 @@
+@import './variables'
+    
+.navbar-container
+    position: fixed;
+    padding: 1rem;
+    top: 0;
+    left: 0;
+    width: 100vw
+    background-color: $main
+    .links-container
+        max-width: $screen-size
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        @media screen and (min-width: $screen-size) 
+            margin-left: calc((100% - #{$screen-size}) * 0.6)
+            
+        .nav-link
+            color: $light
+            padding: 0 1rem
+            text-decoration: none
