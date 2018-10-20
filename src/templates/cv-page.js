@@ -4,24 +4,23 @@ import { graphql } from "gatsby";
 import Layout from "../components/Layout";
 import Content, { HTMLContent } from "../components/Content";
 
-export const CVPageTemplate = ({ name, content, contentComponent }) => {
+export const CVPageTemplate = ({
+  name,
+  portrait,
+  categories,
+  content,
+  contentComponent
+}) => {
   const PageContent = contentComponent || Content;
 
+  console.log(categories);
+
   return (
-    <section className="section section--gradient">
-      <div className="container">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <div className="section">
-              <h2 className="title is-size-3 has-text-weight-bold is-bold-light">
-                {name}
-              </h2>
-              <PageContent className="content" content={content} />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <div>
+      <img src={portrait} alt="portrait" />
+      <h3>{name}</h3>
+      <PageContent content={content} />
+    </div>
   );
 };
 
@@ -39,7 +38,9 @@ const CVPage = ({ data }) => {
     <Layout>
       <CVPageTemplate
         contentComponent={HTMLContent}
-        title={post.frontmatter.title}
+        name={post.frontmatter.name}
+        portrait={post.frontmatter.portrait}
+        categories={post.frontmatter.categories}
         content={post.html}
       />
     </Layout>
@@ -59,6 +60,7 @@ export const cvPageQuery = graphql`
       frontmatter {
         name
         portrait
+        categories
       }
     }
   }

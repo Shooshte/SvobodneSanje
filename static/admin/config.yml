@@ -39,4 +39,9 @@ collections:
             }
           - { label: "Name", name: "name", widget: "string" }
           - { label: "Portrait", name: "portrait", widget: "image" }
-          - { label: "Body", name: "body", widget: "markdown" }
+          - label: "Categories"
+            name: "categories"
+            widget: "list"
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: "Body", name: "body", widget: "markdown" }
